@@ -52,6 +52,8 @@ To comply with this standard, the identifier shared by the threads is the PID of
 
 The `getpid()` system call returns the value of `tgid` relative to the current process instead of the value of `pid`, so all the threads of a multithreaded application share the same identifier.
 
+![Storing the thread_info structure and the process kernel stack in two page frames](http://i.imgur.com/U3FJkMA.png)
+
 # Doubly linked list
 
 ## Circular list: `list_head`
@@ -63,6 +65,8 @@ struct list_head {
     struct list_head *next, *prev;
 };
 ```
+
+![Doubly linked lists built with list_head data structures](http://i.imgur.com/AhPK8qG.png)
 
 A new list is created by using the `LIST_HEAD(list_name)` macro defined in `include/linux/list.h`.
 
@@ -180,6 +184,8 @@ The four hash tables are dynamically allocated during the kernel initialization 
 #define pid_hashfn(nr) hash_long((unsigned long)nr, pidhash_shift)
 static struct hlist_head *pid_hash[PIDTYPE_MAX];
 ```
+
+![The PID hash tables](http://i.imgur.com/2Kc7nlZ.png)
 
 ## PID data structure
 

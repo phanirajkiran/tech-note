@@ -12,6 +12,8 @@ Memory Addressing
 
 The Memory Management Unit (MMU) transforms a logical address into a linear address by means of a hardware circuit called a segmentation unit; subsequently, a second hardware circuit called a paging unit transforms the linear address into a physical address.
 
+![Logical address translation](http://i.imgur.com/cFFwLoe.png)
+
 # Segmentation in Hardware
 
 Starting with the 80286 model, Intel microprocessors perform address translation in two different ways called *real mode* and *protected mode*. Real mode exists mostly to maintain processor compatibility with older models and to allow the operating system to bootstrap.
@@ -60,11 +62,15 @@ Usually only one GDT is defined, while each process is permitted to have its own
 
 The 80x86 processor provides an additional nonprogrammable register for each of the six programmable segmentation registers. Every time a Segment Selector is loaded in a segmentation register, the corresponding Segment Descriptor is loaded from memory into the matching nonprogrammable CPU register. rom then on, translations of logical addresses referring to that segment can be performed without accessing the GDT or LDT stored in main memory.
 
+![Segment Selector and Segement Descriptor](http://i.imgur.com/FI9J76P.png)
+
 ## Segmentation Unit
 
 - Examines the *TI* field of the Segment Selector to determine which Descriptor Table stores the Segment Descriptor (GDT or LDT).
 - Computes the address of the Segment Descriptor from the *index* field of the Seg-ment Selector. The *index* field is multiplied by 8 (the size of a Segment Descriptor), and the result is added to the content of the *gdtr* or *ldtr* register.
 - Adds the offset of the logical address to the *Base* field of the Segment Descriptor, thus obtaining the linear address.
+
+![Translating a logical address](http://i.imgur.com/0e9ucnK.png)
 
 # Segmentation in Linux
 
@@ -123,6 +129,8 @@ If the `Present` flag of the entry of the Page Table is cleared, the page is not
 
 Both the Directory and the Table fields are 10 bits long, so Page Directories and Page Tables can include up to 1,024 entries. It follows that a Page Directory can address up to 1024 × 1024 × 4096=**2^32** memory cells, as you’d expect in 32-bit addresses.
 
+![Paging by 80x86 processors](http://i.imgur.com/tshkQuw.png)
+
 ## Extended Paging
 
 Starting with the Pentium model, 80×86 microprocessors introduce extended paging, which allows page frames to be **4 MB** instead of 4 KB in size. Extended paging is used to translate large contiguous linear address ranges into corresponding physical ones; in these cases, the kernel can do without intermediate Page Tables and thus save memory and preserve TLB entries.
@@ -131,6 +139,8 @@ In this case, the paging unit divides the 32 bits of a linear address into two f
 
 - *Directory*: The most significant 10 bits
 - *Offset*: The least significant 22 bits
+
+![Extended paging](http://i.imgur.com/6VJ9lCq.png)
 
 ## Hardware Protection Scheme
 
@@ -169,6 +179,8 @@ Linux adopts a common paging model that fits both 32-bit and 64-bit architecture
 - Page Upper Directory
 - Page Middle Directory
 - Page Table
+
+![The Linux paging model](http://i.imgur.com/3dedh53.png)
 
 For 32-bit architectures with no Physical Address Extension, two paging levels are sufficient. Linux essentially eliminates the Page Upper Directory and the Page Middle Directory fields by saying that they contain zero bits.
 
