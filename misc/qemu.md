@@ -36,5 +36,10 @@ $ qemu-system-i386 -m 16M -boot a -fda Image -hda ../osdi.img
   - `-boot c`: Boot the first virtual hard drive
   - `-boot d`: Boot the first virtual CDROM drive
   - `-boot n`: Boot from virtual network
+- Boot splash
+  - `-boot menu=on,splash=boot.jpg,splash-time=5000`
+  - The splash file in jpeg or bmp format could be passed to BIOS
+    - QEMU will copy the file to ROM folder and rename it as `bootsplash.jpg`, then seabios will try to load splash file from either CBFS (on coreboot) or fw_cfg (on QEMU).
+  - The resolution should be supported by the SVGA mode, so the recommended is 320x240, 640x480, 800x640.
 
 Reference: [https://wiki.gentoo.org/wiki/QEMU/Options](https://wiki.gentoo.org/wiki/QEMU/Options)
