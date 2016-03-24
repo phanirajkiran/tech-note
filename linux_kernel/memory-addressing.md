@@ -171,6 +171,12 @@ When mapping linear addresses to 4 KB pages (`PS` flag cleared in Page Directory
 
 However, the main problem with PAE is that linear addresses are still 32 bits long. This forces kernel programmers to reuse the same linear addresses to map different areas of RAM.
 
+## Translation Lookaside Buffers (TLB)
+
+Besides general-purpose hardware caches, 80x86 processors include another cache called *Translation Lookaside Buffers (TLB)* to speed up linear address translation. When a linear address is used for the first time, the corresponding physical address is computed through slow accesses to the Page Tables in RAM. The physical address is then stored in a TLB entry so that further references to the same linear address can be quickly translated.
+
+In a multiprocessor system, each CPU has its own TLB, called the *local TLB* of the CPU. When the *cr3* control register of a CPU is modified, the hardware automatically invalidates all entries of the local TLB, because a new set of page tables is in use and the TLBs are pointing to old data.
+
 # Paging in Linux
 
 Linux adopts a common paging model that fits both 32-bit and 64-bit architectures. Starting with version 2.6.11, a four-level paging model has been adopted:
