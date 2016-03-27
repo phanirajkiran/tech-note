@@ -157,7 +157,7 @@ ssize_t pread(int fd, void *buf, size_t nbytes, off_t offset);
 ssize_t pwrite(int fd, const void *buf, size_t nbytes, off_t offset);
 ```
 
-Calling pread is equivalent to calling `lseek` followed by a call to `read`, with the following exceptions:
+Calling `pread` is equivalent to calling `lseek` followed by a call to `read`, with the following exceptions:
 
 - There is no way to interrupt the two operations that occur when we call `pread` => **atomic**
 - The current file offset is not updated
