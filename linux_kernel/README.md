@@ -7,7 +7,7 @@ Most of notes are extracted from [Understanding the Linux Kernel, 3rd Edition](h
 - [Process Scheduling](process-scheduling.md)
 - [Memory Addressing](memory-addressing.md)
 - [Memory Management](memory-management.md)
-- Process Address Space
+- [Process Address Space](process-address-space.md)
 - The Page Cache
 - Interrupts and Exceptions
 - Kernel Synchronization
