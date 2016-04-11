@@ -1,7 +1,7 @@
 Process Environment
 ===================
 
-# `mina` Function
+# `main` Function
 
 A C program starts execution with a function called `main`. The prototype for the main function is:
 
