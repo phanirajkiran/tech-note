@@ -192,7 +192,7 @@ When a process calls one of the `exec` functions, that process is completely rep
 /* All seven return: −1 on error, no return on success */
 int execl(const char *pathname, const char *arg0, ..., (char *)0);
 int execv(const char *pathname, char *const argv[]);
-int execle(const char *pathname, const char *arg0, ..., (char *)0, char *const envp[] */ );
+int execle(const char *pathname, const char *arg0, ..., (char *)0, char *const envp[]);
 int execve(const char *pathname, char *const argv[], char *const envp[]);
 int execlp(const char *filename, const char *arg0, ..., (char *)0);
 int execvp(const char *filename, char *const argv[]);
