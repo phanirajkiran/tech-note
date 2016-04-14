@@ -9,7 +9,7 @@ Most of notes are extracted from [Advanced Programming in the UNIX Environment, 
 - [Standard I/O Library](standard-io-library.md)
 - [System Data Files and Information](system-data-files-and-information.md)
 - [Process Environment](process-environment.md)
-- Process Control
+- [Process Control](process-control.md)
 - Process Relationships
 - Signals
 - Threads
