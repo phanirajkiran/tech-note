@@ -10,7 +10,7 @@ Most of notes are extracted from [Advanced Programming in the UNIX Environment, 
 - [System Data Files and Information](system-data-files-and-information.md)
 - [Process Environment](process-environment.md)
 - [Process Control](process-control.md)
-- Process Relationships
+- [Process Relationships](process-relationships.md)
 - Signals
 - Threads
 - Thread Control
