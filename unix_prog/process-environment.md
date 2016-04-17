@@ -17,7 +17,7 @@ Each program is also passed an *environment list*. By convention, the environmen
 extern char **environ;
 ```
 
-When a C program is executed by the kerne, a special **start-up routine** is called before the `main` function is called. The executable program file specifies this routine as the starting address for the program; this is set up by the **linker** when it is invoked by the C compiler. This start-up routine takes values from the kernel — the **command-line arguments** and the **environment** — and sets things up so that the `main` function is called.
+When a C program is executed by the kernel, a special **start-up routine** is called before the `main` function is called. The executable program file specifies this routine as the starting address for the program; this is set up by the **linker** when it is invoked by the C compiler. This start-up routine takes values from the kernel — the **command-line arguments** and the **environment** — and sets things up so that the `main` function is called.
 
 # Process Termination
 
@@ -106,7 +106,7 @@ ISO C defines a function that we can use to fetch values from the environment:
 char *getenv(const char *name);
 ```
 
-Note that this function returns a pointer to the value of a `name=value` string. We should always use `getenv` to fetch a specific value from the environment, instead of accessing `environ` directly.
+Note that this function returns a pointer to the `value` of a `name=value` string. We should always use `getenv` to fetch a specific value from the environment, instead of accessing `environ` directly.
 
 There are also some functions provided for changing the value of an existing variable or adding a new variable to the environment:
 
