@@ -269,10 +269,13 @@ Formatted output is handled by the five `printf` functions:
 
 /* All three return: number of characters output if OK, negative value if output error */
 int printf(const char *restrict format, ...);
-int fprintf(FILE *restrict fp, const char *restrict format, ...); int dprintf(int fd, const char *restrict format, ...);
+int fprintf(FILE *restrict fp, const char *restrict format, ...);
+int dprintf(int fd, const char *restrict format, ...);
+
+/* Returns: number of characters stored in array if OK, negative value if encoding error */
+int sprintf(char *restrict buf, const char *restrict format, ...);
 
 /* Returns: number of characters that would have been stored in array if buffer was large enough, negative value if encoding error */
-int sprintf(char *restrict buf, const char *restrict format, ...); Returns: number of characters stored in array if OK, negative value if encoding error
 int snprintf(char *restrict buf, size_t n, const char *restrict format, ...);
 ```
 
